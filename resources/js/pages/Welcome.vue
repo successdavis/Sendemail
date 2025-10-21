@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen max-w-4/5 mx-auto bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <div class="min-h-screen md:max-w-4/5 mx-auto bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
     <!-- Navbar -->
     <header class="flex items-center justify-between px-8 py-4 border-b border-gray-200 dark:border-gray-800">
       <div class="flex items-center gap-2">

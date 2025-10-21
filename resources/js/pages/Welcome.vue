@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen md:max-w-4/5 mx-auto bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
     <!-- Navbar -->
-    <header class="flex items-center justify-between px-8 py-4 border-b border-gray-200 dark:border-gray-800">
+    <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800">
       <div class="flex items-center gap-2">
         <Mail class="w-6 h-6 text-blue-600" />
         <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400">CorpMail</h1>
@@ -36,7 +36,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="flex flex-col-reverse md:flex-row items-center justify-between px-10 py-20">
+    <section class="flex flex-col-reverse md:flex-row items-center justify-between px-6 py-4 md:mt-20">
       <div class="flex-1 space-y-6">
         <h2 class="text-4xl font-extrabold md:text-5xl leading-tight">
           Send and Receive Emails <br />
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="flex-1 flex justify-center md:justify-end mt-10 md:mt-0">
+      <div class="flex-1 flex justify-center md:justify-end mt-10 mb-10 md:mb-0 md:mt-0">
         <img
           src="/images/email-dashboard.jpg"
           alt="Email dashboard mockup"

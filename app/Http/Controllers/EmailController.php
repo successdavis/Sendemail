@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Email;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -25,6 +26,13 @@ class EmailController extends Controller
             'to' => 'required|email',
             'subject' => 'required|string|max:255',
             'body' => 'required|string',
+        ]);
+
+        $email = Email::create([
+           'to' => $validated['to'],
+           'from' => 'info@vacationapplications.com',
+           'subject' => $validated['subject'],
+           'body' => $validated['body'],
         ]);
 
         try {

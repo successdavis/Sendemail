@@ -15,7 +15,12 @@ Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/compose-new-message', [EmailController::Class, 'composeNewMessage'])->name('compose-new-message');
-Route::get('/inbox', [EmailController::Class, 'inbox'])->name('inbox');
-Route::post('/api/emails', [EmailController::Class, 'sendEmail'])->name('send-mail');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/compose-new-message', [EmailController::class, 'composeNewMessage'])->name('compose-new-message');
+    Route::get('/inbox', [EmailController::class, 'inbox'])->name('inbox');
+    Route::post('/api/emails', [EmailController::class, 'sendEmail'])->name('send-mail');
+});
+
+
 require __DIR__.'/settings.php';

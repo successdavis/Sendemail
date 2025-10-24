@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Message;
 use App\Models\Email;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -29,20 +30,22 @@ class EmailController extends Controller
         ]);
 
         $email = Email::create([
-           'to' => $validated['to'],
-           'from' => 'info@vacationapplications.com',
-           'subject' => $validated['subject'],
-           'body' => $validated['body'],
+            'to' => $validated['to'],
+            'from' => 'info@vacationapplications.com',
+            'subject' => $validated['subject'],
+            'body' => $validated['body'],
         ]);
 
         try {
-            // Step 2: Send email
-            Mail::html($validated['body'], function ($message) use ($validated) {
-                $message->to($validated['to'])
-                    ->subject($validated['subject']);
-            });
+            Mail::to($email->to)->send(
+                new Message(
+                    $email->to,
+                    'info@vacationapplications.com',
+                    $validated['subject'],
+                    $validated['body']
+                )
+            );
 
-            // Step 3: Log and return success
             Log::info('Email sent successfully', ['to' => $validated['to']]);
 
             return response()->json([
@@ -51,7 +54,6 @@ class EmailController extends Controller
             ], 200);
 
         } catch (\Exception $e) {
-            // Step 4: Log and return error
             Log::error('Email sending failed', [
                 'error' => $e->getMessage(),
                 'to' => $validated['to']

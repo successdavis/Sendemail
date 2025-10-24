@@ -1,0 +1,9 @@
+import{l as y,r as g,m as v,a as d,c as o,b as i,w as l,d as t,n as w,e as u,o as a,F as m,p as k,t as c,h as C}from"./app-CDMRHBVF.js";import{_ as N}from"./AppLayout.vue_vue_type_script_setup_true_lang-D6dSxd9F.js";import"./index-D9WDxhIK.js";import"./useForwardExpose-CLOiiDbp.js";import"./VisuallyHidden-V5QA0SVF.js";import"./RovingFocusGroup-CKjpKJ0i.js";import"./useArrowNavigation-C6Y-ieo6.js";import"./index-D2lAUvAe.js";/*!
+ * vue-router v4.6.3
+ * (c) 2025 Eduardo San Martin Morote
+ * @license MIT
+ */const j=Symbol("");/*!
+ * vue-router v4.6.3
+ * (c) 2025 Eduardo San Martin Morote
+ * @license MIT
+ */function D(){return y(j)}const V={class:"p-6"},B={class:"flex justify-between items-center mb-4"},E={class:"bg-white shadow rounded-lg divide-y divide-gray-200"},F=["onClick"],S={class:"font-semibold"},$={class:"text-sm text-gray-500"},H={key:0,class:"text-sm text-gray-400"},I={key:0,class:"p-4 text-gray-500 text-center"},J={__name:"Index",setup(L){const _=D(),n=g([]),p=async()=>{const e=await C.get("/api/emails");n.value=e.data},b=e=>{_.push(`/emails/${e}`)},f=e=>new Date(e).toLocaleString();return v(p),(e,r)=>{const h=d("Head"),x=d("router-link");return a(),o(m,null,[i(h,{title:"Dashboard"}),i(N,{breadcrumbs:e.breadcrumbs},{default:l(()=>[t("div",V,[t("div",B,[r[1]||(r[1]=t("h1",{class:"text-2xl font-bold"},"📥 Inbox",-1)),i(x,{to:"/emails/create",class:"bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"},{default:l(()=>[...r[0]||(r[0]=[w(" Compose ",-1)])]),_:1})]),t("div",E,[(a(!0),o(m,null,k(n.value,s=>(a(),o("div",{key:s.id,class:"p-4 hover:bg-gray-50 cursor-pointer flex justify-between",onClick:K=>b(s.id)},[t("div",null,[t("h2",S,c(s.subject),1),t("p",$," From: "+c(s.from)+" — "+c(f(s.created_at)),1)]),s.is_read?u("",!0):(a(),o("span",H,"Unread"))],8,F))),128)),n.value.length===0?(a(),o("div",I," No emails yet. ")):u("",!0)])])]),_:1},8,["breadcrumbs"])],64)}}};export{J as default};

@@ -10,11 +10,14 @@ class MailgunController extends Controller
 {
     public function handleIncoming(Request $request)
     {
-        Log::info('request to store email got here');
+         // quick log for debugging (remove later)
+        Log::info('Mailgun webhook received', $request->only(['sender','recipient','subject']));
+
+
         // Optional: Verify Mailgun signature for security
-        if (!$this->verifyMailgunSignature($request)) {
-            return response('Invalid signature', 403);
-        }
+//        if (!$this->verifyMailgunSignature($request)) {
+//            return response('Invalid signature', 403);
+//        }
 
         // Extract email data
         $sender = $request->input('sender');
@@ -25,15 +28,15 @@ class MailgunController extends Controller
         // Example: Log or store in database
         Log::info('📩 New incoming email', compact('sender', 'recipient', 'subject', 'body'));
 
-        $email = Email::create([
-            'to' => 'info@vacationapplications.com',
-            'from' => $sender,
-            'subject' => $subject,
-            'body' => $body,
-            'type' => 'incoming'
+         Email::create([
+            'to' => $request->input('recipient'),
+            'from' => $request->input('sender'),
+            'subject' => $request->input('subject'),
+            'body' => $request->input('body-plain') ?? $request->input('body-html'),
+            'type' => 'incoming',
         ]);
 
-        return response('Email received', 200);
+         return response('OK', 200);
     }
 
     private function verifyMailgunSignature(Request $request): bool

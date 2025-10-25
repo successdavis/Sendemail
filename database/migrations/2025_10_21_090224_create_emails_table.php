@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('from');
             $table->string('subject');
             $table->text('body');
+            $table->enum('type', ['incoming', 'outgoing'])->default('outgoing');
             $table->timestamps();
         });
     }

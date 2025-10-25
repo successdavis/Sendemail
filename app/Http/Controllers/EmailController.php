@@ -13,7 +13,16 @@ class EmailController extends Controller
 {
     public function inbox()
     {
-        return Inertia::render('Index');
+        $emails = Email::where('type', 'incoming')->get();
+
+        return Inertia::render('Index', ['emails' => $emails]);
+    }
+
+    public function inboxMessages()
+    {
+        $emails = Email::where('type', 'incoming')->get();
+
+        return $emails;
     }
     public function composeNewMessage()
     {
@@ -40,7 +49,6 @@ class EmailController extends Controller
             Mail::to($email->to)->send(
                 new Message(
                     $email->to,
-                    'info@vacationapplications.com',
                     $validated['subject'],
                     $validated['body']
                 )

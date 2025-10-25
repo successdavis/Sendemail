@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inbox', [EmailController::class, 'inbox'])->name('inbox');
     Route::post('/api/emails', [EmailController::class, 'sendEmail'])->name('send-mail');
     Route::get('/api/emails/inbox', [EmailController::class, 'inboxMessages'])->name('inbox-messages');
+    Route::get('/inbox/{email}/view-email', [EmailController::class, 'show'])->name('inbox-message-show');
 });
 
 Route::post('/mailgun/incoming', [MailgunController::class, 'handleIncoming']);

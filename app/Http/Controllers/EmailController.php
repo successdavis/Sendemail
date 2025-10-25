@@ -48,7 +48,7 @@ class EmailController extends Controller
         try {
             Mail::to($email->to)->send(
                 new Message(
-                    $email->to,
+                    'VacationsMail',
                     $validated['subject'],
                     $validated['body']
                 )
@@ -73,5 +73,10 @@ class EmailController extends Controller
                 'details' => $e->getMessage()
             ], 500);
         }
+    }
+
+    public function show(Email $email)
+    {
+        return Inertia::render('Show', ['email' => $email]);
     }
 }

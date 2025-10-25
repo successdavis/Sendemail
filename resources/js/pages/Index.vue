@@ -14,8 +14,9 @@
             </div>
 
             <div class="bg-white dark:bg-gray-800 shadow rounded-lg divide-y divide-gray-200 dark:divide-gray-700">
-                <div
+                <Link
                     v-for="email in emails"
+                    :href="`/inbox/${email.id}/view-email`"
                     :key="email.id"
                     class="p-4 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer flex justify-between"
                     @click="viewEmail(email.id)"
@@ -26,11 +27,11 @@
                             From: {{ email.from }} — {{ formatDate(email.created_at) }}
                         </p>
                     </div>
-                    <span
-                        class="text-sm text-gray-400 dark:text-gray-500"
-                        v-if="!email.is_read"
-                    >Unread</span>
-                </div>
+<!--                    <span-->
+<!--                        class="text-sm text-gray-400 dark:text-gray-500"-->
+<!--                        v-if="!email.is_read"-->
+<!--                    >Unread</span>-->
+                </Link>
 
                 <div v-if="emails.length === 0" class="p-4 text-gray-500 dark:text-gray-400 text-center">
                     No emails yet.
@@ -46,6 +47,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import AppLayout from '@/layouts/AppLayout.vue';
 import axios from 'axios'
+import { Link } from '@inertiajs/vue3';
 
 const router = useRouter()
 const emails = ref([])

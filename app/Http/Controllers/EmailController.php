@@ -48,7 +48,7 @@ class EmailController extends Controller
         try {
             Mail::to($email->to)->send(
                 new Message(
-                    'VacationsMail',
+                    'info@vacationapplications.com',
                     $validated['subject'],
                     $validated['body']
                 )

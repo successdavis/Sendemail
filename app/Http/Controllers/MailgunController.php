@@ -10,6 +10,7 @@ class MailgunController extends Controller
 {
     public function handleIncoming(Request $request)
     {
+        Log::info('request to store email got here');
         // Optional: Verify Mailgun signature for security
         if (!$this->verifyMailgunSignature($request)) {
             return response('Invalid signature', 403);

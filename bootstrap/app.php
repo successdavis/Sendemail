@@ -21,6 +21,11 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'mailgun/incoming',
+            'api/mailgun/incoming', // optional if you may use both
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
